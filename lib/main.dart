@@ -1,8 +1,6 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'flappy_game.dart';
-import 'game_over.dart';
+import 'splash_screen.dart'; // Import the new splash screen
 
 void main() {
   runApp(
@@ -18,21 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final game = FlappyGame();
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      home: Scaffold(
-        body: GameWidget(
-          game: game,
-          overlayBuilderMap: {
-            'GameOver': (context, _) => GameOverOverlay(game: game),
-          },
-        ),
-      ),
+      home: const SplashScreen(),
     );
   }
 }
